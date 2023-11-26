@@ -3,7 +3,7 @@ A stock trading robot for the 2023 and likely 2024 "bear market" conditions for 
 
 A bear market can be identified if a length of time like a month or a few months is consistently 
 causing a daily portfolio loss or a decrease in money every 24 hours. 
-( This is describing a condition of Losing money daily when you have been trading on the Bullish ETF Fund or Long side. )
+( This is describing a condition of Losing money daily when you have been trading on the Bullish ETF Fund side or Long side. )
 
 ***** Then you need to realize that it is a bear market. ***** 
 
