@@ -52,7 +52,7 @@ def write_top_stocks_to_file(filename, top_stocks):
     with open(filename, 'w') as file:
         for symbol, price_increase in top_stocks.items():
             percent_change = price_increase * 100
-            if percent_change > 0.7:
+            if percent_change > 0.01:
                 file.write(f"{symbol}\n")
 
 # Function to calculate the next run time
@@ -116,7 +116,7 @@ if __name__ == "__main__":
                 print_top_stocks(top_increase_stocks)
 
                 print("")
-                print("Writing the list of stocks if they increased +0.71% : ")
+                print("Writing the list of stocks if they increased +0.01% : ")
                 print("")
                 # Write the top increase stocks to the output file and display on the screen
                 write_top_stocks_to_file(output_filename, top_increase_stocks)
