@@ -1,4 +1,7 @@
 # Bear-Market-Stock-Trading-Robot
+
+***** Please be patient with me because this is a Really New Python Project and I am still fixing the bugs in the beta code.  *****
+
 A stock trading robot for the 2023 and likely 2024 "bear market" conditions for the USA stock market. 
 
 A bear market can be identified if a length of time like a month or a few months is consistently 
