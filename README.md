@@ -11,6 +11,9 @@ causing a daily portfolio loss or a decrease in money every 24 hours.
 
 ***** Then you need to realize that it is a bear market. ***** 
 
+A bear market is not always identified as a 100% recession, although a bear market can precede a recession. 
+A bear market can also precede an all-out widespread stock market crash, so be careful. 
+
 Trading in a bear market is effective when only 
 being strict about purchasing ETF Funds that are Bearish on the Short side. 
 
