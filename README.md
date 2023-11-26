@@ -2,7 +2,9 @@
 A stock trading robot for the 2023 and likely 2024 "bear market" conditions for the USA stock market. 
 
 A bear market can be identified if a length of time like a month or a few months is consistently 
-causing a daily portfolio to lose money every 24 hours. Then you need to realize that it is a bear market. 
+causing a daily portfolio loss or a decrease in money every 24 hours. 
+
+***** Then you need to realize that it is a bear market. ***** 
 
 Important: Don't forget to regularly update your list of stocks to buy and keep an eye on the market conditions. Happy trading!
 
