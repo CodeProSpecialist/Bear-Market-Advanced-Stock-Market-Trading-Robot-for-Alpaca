@@ -12,9 +12,9 @@ def is_market_hours(current_time):
     return current_time.weekday() < 5 and market_open_time <= current_time <= market_close_time
 
 
-# Function to check if a stock has increased in value by 10%
-def has_increased_by_10_percent(start_value, end_value):
-    return (end_value - start_value) / start_value >= 0.1
+# Function to check if a stock has increased in value by 0.01%
+def has_increased_by_0_01_percent(start_value, end_value):
+    return (end_value - start_value) / start_value >= 0.0001  # 0.01% as a decimal
 
 
 # Function to get the current date and time in US/Eastern timezone
@@ -99,7 +99,7 @@ while True:
                     end_price = stock_data["Close"].iloc[-1]
 
                     # Check if the stock has increased in value by 10%
-                    if has_increased_by_10_percent(start_price, end_price):
+                    if has_increased_by_0_01_percent(start_price, end_price):
                         # Print the backtesting details with formatted dates and 2 digits after the decimal point
                         print(
                             f"Backtesting Dates: {start_time.strftime('%Y-%m-%d %H:%M')} to {end_time.strftime('%Y-%m-%d %H:%M')}")
