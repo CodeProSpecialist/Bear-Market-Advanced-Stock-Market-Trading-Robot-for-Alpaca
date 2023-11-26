@@ -1,6 +1,7 @@
 # Bear-Market-Stock-Trading-Robot
 
-***** Please be patient with me because this is a Really New Python Project and I am still fixing the bugs in the beta code.  *****
+***** Please be patient with me because this is a Really New Python Project and I am still fixing the bugs in the beta code.
+This message is posted on 11-26-2023. *****
 
 A stock trading robot for the 2023 and likely 2024 "bear market" conditions for the USA stock market. 
 
