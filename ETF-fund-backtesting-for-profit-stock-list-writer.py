@@ -85,7 +85,7 @@ while True:
             # Initialize a list to store symbols that meet the criteria
             symbols_to_write = []
 
-            # Fetch stock data and append symbols that have increased by 10% or more to the list
+            # Fetch stock data and append symbols that have increased by 0.01% or more to the list
             for symbol in stock_symbols:
                 stock = yf.Ticker(symbol)
                 print(f"Downloading the historical data for {symbol}.....")
@@ -98,7 +98,7 @@ while True:
                     start_price = stock_data["Close"].iloc[0]
                     end_price = stock_data["Close"].iloc[-1]
 
-                    # Check if the stock has increased in value by 10%
+                    # Check if the stock has increased in value by 0.01%
                     if has_increased_by_0_01_percent(start_price, end_price):
                         # Print the backtesting details with formatted dates and 2 digits after the decimal point
                         print(
