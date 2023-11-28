@@ -385,8 +385,8 @@ def buy_stocks(bought_stocks, stocks_to_buy, buy_sell_lock):
     # debugging code below to run the robot at different times
     # start_trading_time = datetime.now(pytz.timezone('US/Eastern')).replace(hour=5, minute=30, second=0, microsecond=0)
 
-    # Define the target time as 3:30pm Eastern Time to begin looking for bear stocks to buy near the market closing time.
-    start_trading_time = datetime.now(pytz.timezone('US/Eastern')).replace(hour=15, minute=30, second=0, microsecond=0)
+    # Define the target time as 2:57pm Eastern Time to begin looking for bear stocks to buy near the market closing time.
+    start_trading_time = datetime.now(pytz.timezone('US/Eastern')).replace(hour=14, minute=57, second=0, microsecond=0)
 
     # print("datetime.now as compared to start_trading_time: ",datetime.now(pytz.timezone('US/Eastern')))     # uncomment this line to debug the code
     # print("start_trading_time to start buying stocks: ",start_trading_time)      # uncomment this line to debug the code
