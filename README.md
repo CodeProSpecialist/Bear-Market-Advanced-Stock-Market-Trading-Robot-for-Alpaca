@@ -15,6 +15,8 @@ causing a daily portfolio loss or a decrease in money every 24 hours.
 
 https://github.com/CodeProSpecialist/Stock-Market-Status-Check-for-a-Bear-Market-or-a-Bull-Market
 
+*****
+
 A bear market is not always identified as a 100% recession, although a bear market can precede a recession. 
 A bear market can also precede an all-out widespread stock market crash, so be careful. 
 
