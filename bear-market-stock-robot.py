@@ -703,8 +703,8 @@ def sell_stocks(bought_stocks, buy_sell_lock):
             bought_price = float(position.avg_entry_price)  # keep this under the "o" in "bought"
 
             # Never calculate ATR for a buy price or sell price because it is too slow. 1 second per stock.
-            # Sell stocks if the current price is more than 0.5% higher than the purchase price.
-            if current_price >= bought_price * 1.005:  # keep this under the "o" in "bought"
+            # Sell stocks if the current price is more than 0.1% higher than the purchase price.
+            if current_price >= bought_price * 1.001:  # keep this under the "o" in "bought"
                 qty = api.get_position(symbol).qty
                 api.submit_order(symbol=symbol, qty=qty, side='sell', type='market', time_in_force='day')
                 print(
