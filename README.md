@@ -11,6 +11,10 @@ causing a daily portfolio loss or a decrease in money every 24 hours.
 
 ***** Then you need to realize that it is a bear market. ***** 
 
+***** You are fortunate that I have a python script that checks if the Stock Market is currently a Bear Market or a Bull Market. I recommend running it every 24 hours to be alerted of changes from Bull Market to Bear Market conditions: 
+
+https://github.com/CodeProSpecialist/Stock-Market-Status-Check-for-a-Bear-Market-or-a-Bull-Market
+
 A bear market is not always identified as a 100% recession, although a bear market can precede a recession. 
 A bear market can also precede an all-out widespread stock market crash, so be careful. 
 
