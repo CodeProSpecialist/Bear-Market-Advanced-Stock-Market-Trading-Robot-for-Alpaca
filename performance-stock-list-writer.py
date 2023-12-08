@@ -66,7 +66,7 @@ while True:
                         percentage_change_30_days >= 7.0
                         and percentage_change_14_days >= 5.0
                         and percentage_change_7_days >= 2.7
-                        and percentage_change_1_day >= 0.5
+                        and percentage_change_1_day >= 0.01
                 ):
                     filtered_stocks.append(symbol)
 
