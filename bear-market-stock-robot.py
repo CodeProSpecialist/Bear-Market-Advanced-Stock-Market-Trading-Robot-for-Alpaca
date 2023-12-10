@@ -377,7 +377,7 @@ def buy_stocks(bought_stocks, stocks_to_buy, buy_sell_lock):
     global start_time, end_time, original_start_time, price_changes, symbol   # Access the global end_time variable
 
     extracted_date_from_today_date = datetime.today().date()
-    today_date_str = extracted_date_from_today_date.strftime("%Y-%m-d")
+    today_date_str = extracted_date_from_today_date.strftime("%Y-%m-%d")
 
     now = datetime.now(pytz.timezone('US/Eastern'))
     current_time_str = now.strftime("Eastern Time | %I:%M:%S %p | %m-%d-%Y |")
