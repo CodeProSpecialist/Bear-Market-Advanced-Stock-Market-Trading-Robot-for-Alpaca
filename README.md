@@ -15,6 +15,8 @@ causing a daily portfolio loss or a decrease in money every 24 hours.
 
 ***** The problem that is a loss of profit when holding stock positions overnight is known as a Bear Market. It is extremely important to know if the market is currently a Bull Market or a Bear Market before deciding to hold stock positions overnight.
 
+I recommend that you primarily invest in Vanguard ETF funds to be defensive against loss of profit when holding overnight stock positions. 
+
 ***** You are fortunate that I have a python script that checks if the Stock Market is currently a Bear Market or a Bull Market. I recommend running it every 24 hours to be alerted of changes from Bull Market to Bear Market conditions: 
 
 https://github.com/CodeProSpecialist/Stock-Market-Status-Check-for-a-Bear-Market-or-a-Bull-Market
