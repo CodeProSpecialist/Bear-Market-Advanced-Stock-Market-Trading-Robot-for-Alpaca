@@ -1,6 +1,6 @@
 # Bear-Market-Stock-Trading-Robot
 
-***** This code is in the Beta testing phase, although has successfully passed a number of tests to confirm that it works as intended. 
+***** This code is in the Beta testing phase, even though this code has successfully passed a number of tests to confirm that it works as intended. 
 This message is posted on 11-26-2023. ***** 
 
 A stock trading robot for the 2023 and likely 2024 "bear market" conditions for the USA stock market. 
