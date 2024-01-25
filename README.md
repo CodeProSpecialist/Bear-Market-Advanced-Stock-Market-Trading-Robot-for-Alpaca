@@ -1,9 +1,9 @@
 # Bear-Market-Stock-Trading-Robot
 
 ***** This code is in the Beta testing phase, even though this code has successfully passed a number of tests to confirm that it works as intended. 
-This message is posted on 11-26-2023. ***** 
+New code upgrades and updates on 1-25-2024. ***** 
 
-A stock trading robot for the 2023 and likely 2024 "bear market" conditions for the USA stock market. 
+A stock trading robot for the 2024 "bear market" conditions for the USA stock market. 
 
 A bear market can be identified if a length of time like a month or a few months is consistently 
 causing a daily portfolio loss or a decrease in money every 24 hours. 
