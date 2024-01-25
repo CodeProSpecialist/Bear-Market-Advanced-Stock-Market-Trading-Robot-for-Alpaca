@@ -374,7 +374,9 @@ def end_time_reached():
 
 def buy_stocks(bought_stocks, stocks_to_buy, buy_sell_lock):
     stocks_to_remove = []
-    global start_time, end_time, original_start_time, price_changes, symbol   # Access the global end_time variable
+    global start_time, end_time, original_start_time, price_changes, symbol, buy_stock_green_light
+
+    buy_stock_green_light = 0  # Initialize the global variable
 
     extracted_date_from_today_date = datetime.today().date()
     today_date_str = extracted_date_from_today_date.strftime("%Y-%m-%d")
@@ -567,12 +569,16 @@ def buy_stocks(bought_stocks, stocks_to_buy, buy_sell_lock):
                         # this append tuple will provide the date=date and the purchase_date = date
                         # in the correct datetime format for the database. This is the date
                         # in the below "with buy_sell_lock:" code block.
+                        buy_stock_green_light = 1  # Set the variable to 1 in the buy condition
+
                     # the below else needs to be under the "I" in if qty_of_one_stock
                     else:
                         print("")
                         print("Price increases are favorable to buy stocks. Quantity of One Stock is 0. Not buying "
                               "stocks right now. Perhaps we need more cash before buying. ")
                         print("")
+                        buy_stock_green_light = 0  # Set the variable to 0 in the not buying condition
+
                     # keep the below else under the "if" that is above the else
                 else:
                     print("")
@@ -613,6 +619,29 @@ def buy_stocks(bought_stocks, stocks_to_buy, buy_sell_lock):
 
             session.commit()
             refresh_after_buy()
+
+            # Get account information
+            account_info = api.get_account()  # keep this below time.sleep
+
+            # Check day trade count
+            day_trade_count = account_info.daytrade_count
+
+            # keep the if day_trade_count below the "q" in qty_of_one_stock
+            if buy_stock_green_light == 1 and day_trade_count < 3:
+                print("")
+                print("Waiting 2 minutes before placing a trailing stop sell order.....")
+                print("")
+                time.sleep(120)  # wait 120 seconds for buy order to process.
+
+                stop_order_id = place_trailing_stop_sell_order(symbol, qty_of_one_stock, current_price)
+                # keep the below "if" below the "a" in day_trade_count
+                if stop_order_id:
+                    print(f"Trailing stop sell order placed for {symbol} with ID: {stop_order_id}")
+                    print("")
+                else:
+                    print(f"Failed to place trailing stop sell order for {symbol}")
+                    print("")
+
     except SQLAlchemyError as e:  # keep this under the t in "try"
         session.rollback()  # Roll back the transaction on error
         # Handle the error or log it
@@ -623,6 +652,47 @@ def refresh_after_buy():
     time.sleep(2)
     stocks_to_buy = get_stocks_to_trade()
     bought_stocks = update_bought_stocks_from_api()
+
+
+
+# Function to place trailing stop sell order
+def place_trailing_stop_sell_order(symbol, qty_of_one_stock, current_price):
+    try:
+        stop_loss_percent = 1.0  # You can adjust this percentage based on your strategy
+        stop_loss_price = current_price * (1 - stop_loss_percent / 100)
+
+        stop_order = api.submit_order(
+            symbol=symbol,
+            qty=qty_of_one_stock,
+            side='sell',
+            type='trailing_stop',
+            trail_percent=stop_loss_percent,
+            time_in_force='gtc'  # 'gtc' or 'day'
+        )
+
+        print(f"Placed trailing stop sell order for {qty_of_one_stock} shares of {symbol} at {stop_loss_price}")
+
+        # Check if the symbol exists in bought_stocks before deleting
+        with buy_sell_lock:
+            if symbol in bought_stocks:
+                del bought_stocks[symbol]
+
+                # Delete the position from the database
+                db_position = session.query(Position).filter_by(symbol=symbol).first()
+
+                # Check if the position exists before attempting to delete
+                if db_position:
+                    # Delete the position
+                    session.delete(db_position)
+
+                    # Commit the changes
+                    session.commit()
+
+        return stop_order.id
+
+    except Exception as e:
+        print(f"Error placing trailing stop sell order for {symbol}: {str(e)}")
+        return None
 
 
 # Modify the update_bought_stocks_from_api function to use the correct purchase date
