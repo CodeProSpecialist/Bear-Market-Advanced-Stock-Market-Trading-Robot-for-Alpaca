@@ -772,6 +772,12 @@ def sell_stocks(bought_stocks, buy_sell_lock):
             position = api.get_position(symbol)  # keep this under the "o" in "bought"
             bought_price = float(position.avg_entry_price)  # keep this under the "o" in "bought"
 
+            # Check if there is an open sell order for the symbol
+            open_orders = api.list_orders(status='open', symbol=symbol)
+            if open_orders:
+                print(f"There is an open sell order for {symbol}. Skipping sell order.")
+                continue  # Skip to the next iteration if there's an open sell order
+
             # Never calculate ATR for a buy price or sell price because it is too slow. 1 second per stock.
             # Sell stocks if the current price is more than 0.1% higher than the purchase price.
             if current_price >= bought_price * 1.001:  # keep this under the "o" in "bought"
