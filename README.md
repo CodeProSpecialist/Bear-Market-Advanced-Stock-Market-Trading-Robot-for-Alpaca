@@ -3,7 +3,9 @@
 ***** This code is in the Beta testing phase, even though this code has successfully passed a number of tests to confirm that it works as intended. 
 New code upgrades and updates on 1-26-2024. ***** 
 
-A stock trading robot for the 2024 "bear market" conditions for the USA stock market. 
+This python 3 code was tested with python 3.10 in Ubuntu 22.04 LTS Linux.
+
+A stock trading robot for the possible future "bear market" conditions for the USA stock market. 
 
 A bear market can be identified if a length of time like a month or a few months is consistently 
 causing a daily portfolio loss or a decrease in money every 24 hours. 
