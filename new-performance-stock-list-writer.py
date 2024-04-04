@@ -52,7 +52,7 @@ def write_top_stocks_to_file(filename, top_stocks):
     with open(filename, 'w') as file:
         for symbol, price_increase in top_stocks.items():
             percent_change = price_increase * 100
-            if percent_change > 0.01:
+            if percent_change > 0.05:
                 file.write(f"{symbol}\n")
 
 # Function to calculate the next run time
@@ -72,29 +72,32 @@ def calculate_next_run_time():
     ):
         # If currently within market hours, calculate next run time for the next update
         next_run_time = current_time + timedelta(minutes=(30 - current_minute % 30))
-    else:
-        # If outside market hours, calculate next run time for the next market opening
-        next_run_time = current_time.replace(hour=9, minute=0, second=0, microsecond=0)
-        if current_weekday == 4:  # If it's Friday, set the next run time to Monday
-            next_run_time += timedelta(days=3)
-        elif current_weekday == 5:  # If it's Saturday, set the next run time to Monday
-            next_run_time += timedelta(days=2)
-        else:  # If it's Sunday, set the next run time to Monday
-            next_run_time += timedelta(days=1)
+    elif current_weekday == 6:  # If it's Sunday, set the next run time to Monday
+        next_run_time = current_time.replace(hour=9, minute=0, second=0, microsecond=0) + timedelta(days=1)
+    elif current_weekday == 4:  # If it's Friday, set the next run time to Monday or the end of Friday market hours
+        if current_hour >= 16:  # If it's after market hours on Friday, set the next run time to Monday
+            next_run_time = current_time.replace(hour=9, minute=0, second=0, microsecond=0) + timedelta(days=3)
+        else:  # If it's before market hours on Friday, set the next run time to the end of Friday market hours
+            next_run_time = current_time.replace(hour=16, minute=0, second=0, microsecond=0)
+    else:  # If it's outside market hours
+        print("This program only runs from 9:00 AM to 4:00 PM, Monday through Friday.")
+
+        # Calculate the next run time for the start of the next market day
+        next_run_time = current_time.replace(hour=9, minute=0, second=0, microsecond=0) + timedelta(days=1)
 
     return next_run_time
 
 if __name__ == "__main__":
     input_filename = "list-of-stock-symbols-to-scan.txt"
-    output_filename = "bear-short-ETF-funds-buy-list.txt"
+    output_filename = "electricity-or-utility-stocks-to-buy-list.txt"
 
     # Set the timezone to Eastern Time (ET)
     et = pytz.timezone('US/Eastern')
 
     while True:
         try:
-            # Get the current date and time in Eastern Time
-            current_time = datetime.now(et)
+            # Convert current time to Eastern Time
+            current_time = datetime.now().astimezone(et)
             current_hour = current_time.hour
             current_minute = current_time.minute
             current_weekday = current_time.weekday()
@@ -116,7 +119,7 @@ if __name__ == "__main__":
                 print_top_stocks(top_increase_stocks)
 
                 print("")
-                print("Writing the list of stocks if they increased +0.01% : ")
+                print("Writing the list of stocks if they increased +0.05% today: ")
                 print("")
                 # Write the top increase stocks to the output file and display on the screen
                 write_top_stocks_to_file(output_filename, top_increase_stocks)
@@ -128,8 +131,9 @@ if __name__ == "__main__":
                 next_run_time = calculate_next_run_time()
                 print(f"Next run time: {next_run_time.strftime('%I:%M:%S %p | %m-%d-%Y')} (Eastern Time)")
 
-            # Sleep for 30 seconds before the next update
-            time.sleep(30)
+                # Sleep until the next run time
+                time.sleep((next_run_time - datetime.now(et)).total_seconds())
+
         except Exception as e:
             print(f"Error in the main loop: {e}")
             print("Restarting the script in 1 minute...")
