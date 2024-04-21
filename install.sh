@@ -19,7 +19,8 @@ then
 
     # Install Python packages
     echo "Installing Python packages..."
-    
+
+    # You should not be the root user when installing the Python software in a virtual environment. 
     pip3 install yfinance alpaca-trade-api sqlalchemy pytz ta-lib schedule
     
 fi
