@@ -41,6 +41,8 @@ or
 
 python3 new-performance-stock-list-writer.py
 
+Your Python commands in the directory named My-Python-Virtual-Environment-Packages will be the Python commands that run this installed virtual environment's Python programs. 
+
 open an additional command line terminal and run the following command:
 
 python3 bear-market-stock-robot.py 
