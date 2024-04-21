@@ -30,6 +30,9 @@ fi
 # Activate the virtual environment
 source "$VENV_PATH/bin/activate"
 
+# Inform the user about the virtual environment
+echo "Your Python commands in the directory named My-Python-Virtual-Environment-Packages will be the Python commands that run this installed virtual environment's Python programs."
+
 # Install Python packages within the virtual environment
 pip3 install yfinance alpaca-trade-api sqlalchemy pytz ta-lib schedule
 
