@@ -71,4 +71,12 @@ echo "You can activate Anaconda by running 'conda activate' and then install any
 # Inform the user about the virtual environment
 echo "Your Python commands in the directory for Anaconda will be the Python commands that run this installed virtual environment's Python programs."
 
-echo "All done! You can now run your Python script with Anaconda."
+#echo "All done! You can now run your Python script with Anaconda."
+
+echo "type:   conda activate  " 
+
+echo "type:    pip3 install yfinance alpaca-trade-api sqlalchemy pytz ta-lib schedule"
+
+echo "Then the python 3 packages installation is complete. "
+
+
