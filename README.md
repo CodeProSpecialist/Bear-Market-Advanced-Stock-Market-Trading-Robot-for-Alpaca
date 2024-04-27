@@ -29,6 +29,14 @@ A bear market can also precede an all-out widespread stock market crash, so be c
 Trading in a bear market is effective when only 
 being strict about purchasing ETF Funds that are Bearish on the Short side. 
 
+( in a Python Anaconda environment )
+
+( first activate Anaconda )
+
+conda init
+
+conda activate
+
 Run the commands below:
 
 python3 ETF-fund-backtesting-for-profit-stock-list-writer.py
