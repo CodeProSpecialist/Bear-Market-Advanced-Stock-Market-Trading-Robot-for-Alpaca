@@ -62,7 +62,17 @@ conda init bash
 conda activate
 
 # Install Python packages within the virtual environment
-pip3 install yfinance alpaca-trade-api sqlalchemy pytz ta-lib schedule
+pip3 install yfinance 
+
+pip3 install alpaca-trade-api 
+
+pip3 install sqlalchemy 
+
+pip3 install pytz 
+
+pip3 install ta-lib 
+
+pip3 install schedule
 
 # Inform the user about Anaconda installation
 echo "Your Python commands will be the Python commands that run with Anaconda's Python programs."
