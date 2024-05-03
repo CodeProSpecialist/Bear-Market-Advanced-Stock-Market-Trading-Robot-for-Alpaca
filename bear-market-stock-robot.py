@@ -229,12 +229,14 @@ def remove_symbol_from_trade_list(symbol):
 
 
 def get_opening_price(symbol):
+    symbol = symbol.replace('.', '-')  # Replace '.' with '-'
     stock_data = yf.Ticker(symbol)
     # Fetch the stock data for today and get the opening price
     return round(stock_data.history(period="1d")["Open"].iloc[0], 4)
 
 
 def get_current_price(symbol):
+    symbol = symbol.replace('.', '-')  # Replace '.' with '-'
     stock_data = yf.Ticker(symbol)
     return round(stock_data.history(period='1d')['Close'].iloc[0], 4)
 
@@ -252,6 +254,7 @@ def get_atr_low_price(symbol):
 
 
 def get_average_true_range(symbol):
+    symbol = symbol.replace('.', '-')  # Replace '.' with '-'
     ticker = yf.Ticker(symbol)
     data = ticker.history(period='30d')
     atr = talib.ATR(data['High'].values, data['Low'].values, data['Close'].values, timeperiod=22)
@@ -272,6 +275,7 @@ def status_printer_sell_stocks():
 
 # Function to calculate MACD, RSI, and Volume
 def calculate_technical_indicators(symbol, lookback_days=90):
+    symbol = symbol.replace('.', '-')  # Replace '.' with '-'
     stock_data = yf.Ticker(symbol)
     historical_data = stock_data.history(period=f'{lookback_days}d')
 
